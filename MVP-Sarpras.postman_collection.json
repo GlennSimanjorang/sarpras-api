@@ -1,0 +1,537 @@
+{
+	"info": {
+		"_postman_id": "900196dc-b94c-463f-a1a2-4593ef309610",
+		"name": "MVP-Sarpras",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30402736"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"kenneth\",\r\n    \"password\": \"gokil123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user1\",\r\n    \"password\": \"helloWorld1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "1|UHxQ3UC3zEgXrYRiMshSQUrqf3gHCduu2HVnzLKP1307bf78"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:8000/api/auth/logout"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/categories"
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"alat alat pplg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/admin/categories"
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/categories/alat-alat-pplg"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"peralatan-pplg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/admin/categories/alat-alat-pplg"
+							},
+							"response": []
+						},
+						{
+							"name": "Destroy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/categories/peralatan-pplg"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Items",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/items"
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"komputer animasi\",\r\n    \"stock\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/admin/items"
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/items/kmptr-nms"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Pictures/WhatsApp Image 2024-07-23 at 21.14.38_a0ffec5c.jpg"
+										}
+									]
+								},
+								"url": "http://127.0.0.1:8000/api/admin/items/kmptr-nms"
+							},
+							"response": []
+						},
+						{
+							"name": "Change image",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/ASUS/Pictures/WhatsApp Image 2024-07-23 at 21.14.38_a0ffec5c.jpg"
+										}
+									]
+								},
+								"url": "http://127.0.0.1:8000/api/admin/items/lt-gkl/change-image"
+							},
+							"response": []
+						},
+						{
+							"name": "Destroy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/items/lt-gkl"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Borrows",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/borrows"
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/borrows/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Approve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/borrows/1/approve"
+							},
+							"response": []
+						},
+						{
+							"name": "Reject",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/borrows/1/reject"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Returns",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/returns"
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/returns/101"
+							},
+							"response": []
+						},
+						{
+							"name": "Approve",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/returns/101/approve"
+							},
+							"response": []
+						},
+						{
+							"name": "Reject",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "3|flw3QPjxfEtgp6QqbwuLidX0Sh7YXydq2MnspPKA38a43771"
+									}
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": "http://127.0.0.1:8000/api/admin/returns/101/reject"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Request",
+					"item": [
+						{
+							"name": "Borrow request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "4|cmg3oqYp9GUPU0K71O8h4oxDPoQQUkaiX4QEMpSa7df2264a"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sku\": \"q\",\r\n    \"quantity\": 12\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/user/borrow-request"
+							},
+							"response": []
+						},
+						{
+							"name": "Return request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "4|cmg3oqYp9GUPU0K71O8h4oxDPoQQUkaiX4QEMpSa7df2264a"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sku\": \"q\",\r\n    \"quantity\": 12\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/user/borrow-request"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "History",
+					"item": [
+						{
+							"name": "Borrow history",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "4|cmg3oqYp9GUPU0K71O8h4oxDPoQQUkaiX4QEMpSa7df2264a"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sku\": \"q\",\r\n    \"quantity\": 12\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/user/borrow-history"
+							},
+							"response": []
+						},
+						{
+							"name": "Return history",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "4|cmg3oqYp9GUPU0K71O8h4oxDPoQQUkaiX4QEMpSa7df2264a"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sku\": \"q\",\r\n    \"quantity\": 12\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/user/borrow-request"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
