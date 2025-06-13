@@ -10,6 +10,7 @@ Route::prefix("auth")->group(function () {
 });
 
 
+
 Route::middleware("need-token")->group(function () {
 
     Route::prefix("admin")->group(function () {
@@ -28,12 +29,14 @@ Route::middleware("need-token")->group(function () {
         Route::patch("returns/{id}/approve", [\App\Http\Controllers\ReturningController::class, "approve"]);
         Route::patch("returns/{id}/reject", [\App\Http\Controllers\ReturningController::class, "reject"]);
         Route::apiResource("dashboard/count", \App\Http\Controllers\DashboardController::class)->only(["index"]);
+        Route::apiResource("/export/borrowings", \App\Http\Controllers\ExportDataController::class)->only(["index"]);
+        Route::apiResource("/export/returning", \App\Http\Controllers\ExportReturningController::class)->only(["index"]);
     })->middleware("admin-only");
 
     Route::prefix("user")->group(function () {
         Route::get("borrow-history", [\App\Http\Controllers\BorrowingController::class, "userBorrowHistory"]);
         Route::post("borrow-request", [\App\Http\Controllers\BorrowingController::class, "borrowRequest"]);
-        Route::get("items", [\App\Http\Controllers\ItemController::class, "index"]);
+        Route::apiResource("items", \App\Http\Controllers\ItemController::class);
         Route::get("return-history", [\App\Http\Controllers\ReturningController::class, "userReturnHistory"]);
         Route::post("return-request", [\App\Http\Controllers\ReturningController::class, "returnRequest"]);
     });
