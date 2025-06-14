@@ -53,32 +53,6 @@ class authController extends Controller
         return ApiResponse::send(400, "Wrong username or password");
     }
 
-    public function register(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            "username" => "required|string|unique:admins,username",
-            "password" => "required|string",
-        ]);
-
-        if ($validator->fails()) {
-            return ApiResponse::send(422, "Validation failed", $validator->errors());
-        }
-
-        $credentials = $validator->validated();
-        $credentials["password"] = Hash::make($credentials["password"]);
-
-        $newAdmin = Admin::query()->create($credentials);
-        Auth::attempt($credentials);
-
-        $token = $newAdmin->createToken("auth_token")->plainTextToken;
-
-        $newAdmin->update([
-            "last_login_at" => Carbon::now()
-        ]);
-
-        return ApiResponse::send(200, "Registered", null, $token);
-    }
-
     public function logout(Request $request)
     {
         Auth::guard("sanctum")->user()->tokens()->delete();

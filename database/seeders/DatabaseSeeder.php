@@ -14,6 +14,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,24 +23,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        User::query()->create([
-//            "username" => "user1",
-//            "password" => Hash::make("helloWorld1"),
-//        ]);
-// //
-//        Admin::query()->create([
-//            "username" => "kenneth",
-//            "password" => Hash::make("helloWorld1"),
-//        ]);
-//
-//        User::factory(10)->create();
-//        Category::factory(5)->create();
-//        Item::factory(20)->create();
-//        ItemCategory::factory(20)->create();
+        
         $users = User::all();
         $items = Item::all();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             $createdAt = Carbon::createFromDate(2025, 4, 1)->addDays(rand(0, 90)); // random antara 1 April - 30 Juni
             $dueDate = (clone $createdAt)->addDays(rand(3, 14)); // 3-14 hari dari tanggal dibuat
 
@@ -64,5 +52,6 @@ class DatabaseSeeder extends Seeder
                 'borrow_id' => $borrowing->id
             ]);
         }
+
     }
 }

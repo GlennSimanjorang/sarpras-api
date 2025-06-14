@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ItemNotFoundException;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -35,7 +36,9 @@ class CategoryController extends Controller
         }
 
         $cred = $validator->validated();
-        $cred["slug"] = str_replace(" ", "-", $cred["name"]);
+        $name = $cred["name"];
+        $slug = DB::select("SELECT make_slug(?) as slug", [$name])[0]->slug;
+        $cred["slug"] = $slug;
 
         if (Category::query()->where("slug", $cred["slug"])->exists()) {
             return ApiResponse::send(403, "Category already existed");

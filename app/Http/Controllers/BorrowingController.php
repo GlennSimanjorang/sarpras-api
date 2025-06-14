@@ -39,29 +39,25 @@ class BorrowingController extends Controller
 
     public function approve(Request $request, int $id)
     {
-        $borrowing = Borrowing::query()->with(["user","item"])->find($id);
+        $borrowing = Borrowing::with(["user", "item"])->find($id);
 
-        if ($borrowing->status != "pending") {
-            return ApiResponse::send(400, "This borrow record already approved/rejected");
-        }
-
-        if (is_null($borrowing)) {
+        if (!$borrowing) {
             return ApiResponse::send(404, "Borrowing record not found");
         }
 
-        $currentUser = Auth::guard("sanctum")->user();
-        $admin = \App\Models\Admin::query()->where("id", $currentUser->id)->where("username", $currentUser->username)->first();
+        if ($borrowing->status !== "pending") {
+            return ApiResponse::send(400, "Borrow record already processed");
+        }
 
-        $item = Item::query()->find($borrowing->item_id);
+        $currentUser = Auth::guard("sanctum")->user();
 
         $borrowing->update([
             "status" => "approved",
-            "approved_by" => $admin->id,
-            "approved_at" => Carbon::now()
+            "approved_by" => $currentUser->id,
+            "approved_at" => now()
         ]);
-        $item->update([
-            "stock" => $item->stock -= $borrowing->quantity
-        ]);
+
+
 
         return ApiResponse::send(200, "Borrowing approved", null, $borrowing);
     }
